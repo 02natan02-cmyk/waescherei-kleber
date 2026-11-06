@@ -77,7 +77,7 @@
   if (burger && mnav) { burger.addEventListener('click', () => { const o = mnav.hidden; mnav.hidden = !o; burger.setAttribute('aria-expanded', o); }); $$('a', mnav).forEach(a => a.addEventListener('click', () => { mnav.hidden = true; burger.setAttribute('aria-expanded', false); })); }
 
   /* ---------------- Öffnungszeiten live ---------------- */
-  const H = (window.KL || {}).hours || [];
+  let H = (window.KL || {}).hours || [];
   const DN = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'], DS = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
   function berlin() { const p = new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Berlin', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(new Date()); const g = k => (p.find(x => x.type === k) || {}).value; return { d: { Mon: 0, Tue: 1, Wed: 2, Thu: 3, Fri: 4, Sat: 5, Sun: 6 }[g('weekday')], m: (+g('hour') % 24) * 60 + +g('minute') }; }
   const mins = s => { const [h, m] = s.split(':'); return +h * 60 + +m; };
@@ -108,6 +108,16 @@
     $('[data-oznext]', oz).textContent = open ? `· bis ${hu(h[1])} Uhr` : nx ? `· öffnet ${when} um ${hu(nx.t)} Uhr` : '';
   }
   ozUpd(); setInterval(ozUpd, 30000);
+
+  /* ---------------- Öffnungszeiten aus dem Google-Profil (fe-zeiten.js, nachts aktualisiert) ---------------- */
+  document.addEventListener('fe-zeiten', e => {
+    const z = e.detail; H = z.aktuell.map(t => t.length ? [t[0][0], t[t.length - 1][1]] : null);
+    $$('[data-hours] li').forEach(li => { const i = (+li.dataset.day + 6) % 7, b = $('b', li); if (!b) return;
+      const kurz = li.closest('.oz-wk'); li.classList.toggle('zu', !H[i]);
+      b.textContent = !H[i] ? 'geschlossen' : kurz ? z.zeile(i) : z.aktuell[i].map(t => t[0] + ' – ' + t[1]).join(', '); });
+    const f = $('[data-ftrzeiten]'); if (f) f.innerHTML = z.gruppen().map(g => g.tage + ' ' + g.zeit).join('<br>');
+    status(); ozUpd();
+  });
 
   /* ---------------- Programm-Drehknopf ---------------- */
   const dialEl = $('[data-dial]');

@@ -1,0 +1,25 @@
+# Öffnungszeiten jede Nacht aus dem Google-Unternehmensprofil holen (Falcon-Eye-Werkzeugkasten, oeffnungszeiten/)
+# Braucht: Secret GOOGLE_PLACES_KEY (setzt Natan einmal), PLACE_ID unten.
+name: Oeffnungszeiten von Google
+on:
+  schedule:
+    - cron: '23 2 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  holen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Zeiten holen
+        run: python3 .github/oeffnungszeiten/hole.py
+        env:
+          GOOGLE_PLACES_KEY: ${{ secrets.GOOGLE_PLACES_KEY }}
+          PLACE_ID: ChIJw5_8afyzlUcRvI84o3DPWrc
+      - name: Speichern, wenn sich etwas geändert hat
+        run: |
+          git config user.name "Oeffnungszeiten-Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add daten/oeffnungszeiten.json 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m "Öffnungszeiten aus dem Google-Profil aktualisiert" && git push)

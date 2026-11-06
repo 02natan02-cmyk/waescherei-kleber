@@ -15,7 +15,7 @@
 <meta name="theme-color" content="#1546a8">
 <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/kl.css?v=1793955116">
+<link rel="stylesheet" href="assets/kl.css?v=1793962609">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "DryCleaningOrLaundry", "name": "Wäscherei Kleber", "foundingDate": "1971", "telephone": "+4968156800", "faxNumber": "+4968156842", "email": "info@waescherei-kleber.de", "address": {"@type": "PostalAddress", "streetAddress": "Gersweilerstraße 20", "postalCode": "66117", "addressLocality": "Saarbrücken", "addressCountry": "DE"}, "geo": {"@type": "GeoCoordinates", "latitude": 49.2324, "longitude": 6.9739}, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Thursday"], "opens": "10:00", "closes": "17:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Friday"], "opens": "09:00", "closes": "17:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday", "Saturday"], "opens": "09:00", "closes": "13:00"}], "@id": "https://waescherei-kleber.de/#waescherei", "url": "https://waescherei-kleber.de/", "image": "https://waescherei-kleber.de/og.jpg", "logo": "https://waescherei-kleber.de/img/favicon.svg", "areaServed": "Saarbrücken", "hasMap": "https://www.google.com/maps/search/?api=1&query=W%C3%A4scherei%20Kleber%2C%20Gersweilerstra%C3%9Fe%2020%2C%2066117%20Saarbr%C3%BCcken"}, {"@type": "WebSite", "@id": "https://waescherei-kleber.de/#website", "url": "https://waescherei-kleber.de/", "name": "Wäscherei Kleber", "inLanguage": "de-DE", "publisher": {"@id": "https://waescherei-kleber.de/#waescherei"}}]}</script>
 <style>img:where([width][height]){height:auto}</style>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -45,6 +45,7 @@
       <div class="oz" id="oeffnungszeiten" role="region" aria-label="Öffnungszeiten" data-oz>
   <p class="oz-k">Öffnungszeiten</p>
   <p class="oz-st" data-ozst aria-live="polite"><i aria-hidden="true"></i><b data-ozstt>Heute für Sie da</b> <span class="oz-next" data-oznext></span></p>
+  <div data-zeiten-hinweis></div>
   <ul class="oz-wk" data-hours><li data-day="1"><span>Montag</span><b>10–17 Uhr</b></li><li data-day="2"><span>Dienstag</span><b>9–17 Uhr</b></li><li data-day="3"><span>Mittwoch</span><b>9–13 Uhr</b></li><li data-day="4"><span>Donnerstag</span><b>10–17 Uhr</b></li><li data-day="5"><span>Freitag</span><b>9–17 Uhr</b></li><li data-day="6"><span>Samstag</span><b>9–13 Uhr</b></li><li data-day="0" class="zu"><span>Sonntag</span><b>geschlossen</b></li></ul>
 </div>
       <p class="lead">Seit über 50 Jahren in der Gersweilerstraße 20 in Alt-Saarbrücken. Ein Familienbetrieb, in dem man Sie noch beim Namen kennt – und in dem die Wäsche in Papier eingeschlagen über die Theke geht.</p>
@@ -293,7 +294,7 @@
     <div><a class="logo" href="index.html"><span class="logo-sign">Wäscherei Kleber</span><small>seit 1971 · Saarbrücken</small><span class="sr"> – Startseite</span></a><p>Wäscherei, Heißmangel, Gardinen- und Lamellenservice. Familienbetrieb in Alt-Saarbrücken – seit 1971.</p></div>
     <div><h4>Besuchen</h4><p>Gersweilerstraße 20<br>66117 Saarbrücken<br><a href="https://www.google.com/maps/search/?api=1&query=W%C3%A4scherei%20Kleber%2C%20Gersweilerstra%C3%9Fe%2020%2C%2066117%20Saarbr%C3%BCcken" target="_blank" rel="noopener">Route planen →</a></p></div>
     <div><h4>Kontakt</h4><p><a href="tel:+4968156800">Tel. 0681 56800</a><br><a href="https://wa.me/4968156800?text=Guten%20Tag%2C%20ich%20habe%20eine%20Frage%20an%20die%20W%C3%A4scherei%20Kleber%3A%20" target="_blank" rel="noopener">WhatsApp schreiben</a><br>Fax 0681 56842<br><a href="mailto:info@waescherei-kleber.de">info@waescherei-kleber.de</a></p></div>
-    <div><h4>Öffnungszeiten</h4><p>Mo &amp; Do 10–17 Uhr<br>Di &amp; Fr 9–17 Uhr<br>Mi &amp; Sa 9–13 Uhr<br>So geschlossen</p></div>
+    <div><h4>Öffnungszeiten</h4><p data-ftrzeiten>Mo &amp; Do 10–17 Uhr<br>Di &amp; Fr 9–17 Uhr<br>Mi &amp; Sa 9–13 Uhr<br>So geschlossen</p></div>
   </div>
   <div class="wrap ftr-b"><span>© Wäscherei Kleber · Inhaber Peter Kleber</span><span><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></span><span class="ftr-concept">Website: <a href="https://falcon-eye.de" target="_blank" rel="noopener">Falcon Eye</a></span></div>
 </footer>
@@ -301,6 +302,7 @@
 <div class="toast" data-toast role="status" aria-live="polite"></div>
 <script>window.KL={"hours": [["10:00", "17:00"], ["9:00", "17:00"], ["9:00", "13:00"], ["10:00", "17:00"], ["9:00", "17:00"], ["9:00", "13:00"], null]};</script>
 <script src="assets/matter.min.js" defer></script>
-<script src="assets/kl.js?v=1793955116" defer></script>
-<script src="assets/fe-bewertung.js?v=1793955116" data-url="https://search.google.com/local/writereview?placeid=ChIJw5_8afyzlUcRvI84o3DPWrc" data-name="Google" data-accent="#1546a8" data-side="right" data-bottom="22" data-bottom-m="96" defer></script>
+<script src="assets/kl.js?v=1793962609" defer></script>
+<script src="assets/fe-zeiten.js?v=1793962609" data-src="daten/oeffnungszeiten.json" defer></script>
+<script src="assets/fe-bewertung.js?v=1793962609" data-url="https://search.google.com/local/writereview?placeid=ChIJw5_8afyzlUcRvI84o3DPWrc" data-name="Google" data-accent="#1546a8" data-side="right" data-bottom="22" data-bottom-m="96" defer></script>
 </body></html>

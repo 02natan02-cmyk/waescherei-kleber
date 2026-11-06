@@ -814,3 +814,4 @@ html.gross .oz-wk li.zu b{font-stretch:78%}
 @media (max-width:640px){.socks .ctas .b{white-space:nowrap;padding:0 10px}}
 @media (max-width:379px){.socks .ctas .b{font-size:calc(15px*var(--z))}}
 @media (max-width:379px){.tk-foot .b,.bl-t .b{padding-left:14px;padding-right:14px;font-size:calc(16px*var(--z))}}
+.oz [data-zeiten-hinweis]:empty{display:none}.oz .fe-zh{--fezh-bg:#fff6dc;--fezh-fg:#1b2a4a;--fezh-rand:#e8b93a;box-shadow:none}
